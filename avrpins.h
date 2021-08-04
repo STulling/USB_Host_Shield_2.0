@@ -98,18 +98,18 @@ e-mail   :  support@circuitsathome.com
     public:\
       typedef uint8_t DataT;\
     public:\
-      static void Write(DataT value){portName = value;}\
-      static void ClearAndSet(DataT clearMask, DataT value){portName = (portName & ~clearMask) | value;}\
-      static DataT Read(){return portName;}\
-      static void DirWrite(DataT value){ddrName = value;}\
-      static DataT DirRead(){return ddrName;}\
-      static void Set(DataT value){portName |= value;}\
-      static void Clear(DataT value){portName &= ~value;}\
-      static void Toggle(DataT value){portName ^= value;}\
-      static void DirSet(DataT value){ddrName |= value;}\
-      static void DirClear(DataT value){ddrName &= ~value;}\
-      static void DirToggle(DataT value){ddrName ^= value;}\
-      static DataT PinRead(){return pinName;}\
+      static void Write(DataT value){portName.OUT = value;}\
+      static void ClearAndSet(DataT clearMask, DataT value){portName.OUT = (portName.OUT & ~clearMask) | value;}\
+      static DataT Read(){return portName.IN;}\
+      static void DirWrite(DataT value){portName.DIR = value;}\
+      static DataT DirRead(){return portName.DIR;}\
+      static void Set(DataT value){portName.OUT |= value;}\
+      static void Clear(DataT value){portName.OUT &= ~value;}\
+      static void Toggle(DataT value){portName.OUT ^= value;}\
+      static void DirSet(DataT value){portName.DIR |= value;}\
+      static void DirClear(DataT value){portName.DIR &= ~value;}\
+      static void DirToggle(DataT value){portName.DIR ^= value;}\
+      static DataT PinRead(){return portName.PIN0CTRL;}\
       enum{Id = ID};\
       enum{Width=sizeof(DataT)*8};\
     };
@@ -550,6 +550,23 @@ public:
 #define P17  Pc3
 #define P18  Pc4
 #define P19  Pc5
+
+#elif defined(__AVR_ATtiny1604__)
+// "Classic" Arduino pin numbers
+
+#define P0  Pa0
+#define P1  Pa1
+#define P2  Pa2
+#define P3  Pa3
+#define P4  Pa4
+#define P5  Pa5
+#define P6  Pa6
+#define P7  Pa7
+
+#define P8  Pb0
+#define P9  Pb1
+#define P10  Pb2
+#define P11  Pb3
 
 // "Classic" Arduino pin numbers
 
