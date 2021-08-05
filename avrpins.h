@@ -98,18 +98,18 @@ e-mail   :  support@circuitsathome.com
     public:\
       typedef uint8_t DataT;\
     public:\
-      static void Write(DataT value){portName.OUT = value;}\
-      static void ClearAndSet(DataT clearMask, DataT value){portName.OUT = (portName.OUT & ~clearMask) | value;}\
-      static DataT Read(){return portName.IN;}\
-      static void DirWrite(DataT value){portName.DIR = value;}\
-      static DataT DirRead(){return portName.DIR;}\
-      static void Set(DataT value){portName.OUT |= value;}\
-      static void Clear(DataT value){portName.OUT &= ~value;}\
-      static void Toggle(DataT value){portName.OUT ^= value;}\
-      static void DirSet(DataT value){portName.DIR |= value;}\
-      static void DirClear(DataT value){portName.DIR &= ~value;}\
-      static void DirToggle(DataT value){portName.DIR ^= value;}\
-      static DataT PinRead(){return portName.PIN0CTRL;}\
+      static void Write(DataT value){Serial.println("Write"); portName.OUT = value;}\
+      static void ClearAndSet(DataT clearMask, DataT value){Serial.println("ClearAndSet");portName.OUT = (portName.OUT & ~clearMask) | value;}\
+      static DataT Read(){Serial.println("Read");return portName.IN;}\
+      static void DirWrite(DataT value){Serial.println("DirWrite");portName.DIR = value;}\
+      static DataT DirRead(){Serial.println("DirRead");return portName.DIR;}\
+      static void Set(DataT value){Serial.println("Set");portName.OUT |= value;}\
+      static void Clear(DataT value){Serial.println("Clear");portName.OUT &= ~value;}\
+      static void Toggle(DataT value){Serial.println("Toggle");portName.OUT ^= value;}\
+      static void DirSet(DataT value){Serial.println("DirSet");portName.DIR |= value;}\
+      static void DirClear(DataT value){Serial.println("DirClear");portName.DIR &= ~value;}\
+      static void DirToggle(DataT value){Serial.println("DirToggle");portName.DIR ^= value;}\
+      static DataT PinRead(){Serial.println("PinRead");return portName.PIN0CTRL;}\
       enum{Id = ID};\
       enum{Width=sizeof(DataT)*8};\
     };
